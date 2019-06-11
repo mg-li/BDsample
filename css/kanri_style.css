@@ -1,0 +1,447 @@
+html
+  {
+  height:100%;
+  margin-bottom:1px;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+body {
+	color: #444444; 
+	background: #ffffff;
+	margin: 0;
+}
+
+a.sub:link {
+	color: #6699cc;
+	text-decoration: none;
+}
+a.sub:visited {
+	color: #669999;
+	text-decoration: none;
+}
+a.sub:hover {
+	color: #669966;
+	text-decoration: underline;
+}
+a:link {
+	color: #6699cc;
+	text-decoration: none;
+}
+a:visited {
+	color: #669999;
+	text-decoration: none;
+}
+a:hover {
+	color: #669966;
+	text-decoration: underline;
+}
+.pankuzu {
+	font-size: 12px;
+	line-height: 14px;
+	color: #FFFFFF;
+	padding-right: 20px;
+	padding-top: 3px;
+}
+
+.f10-13 {
+	color: #666666;
+	font-size: 90%; 
+	line-height: 130%;
+}
+
+
+.f12-12red {
+	font-size: 90%;
+	color: #CC0000;
+	padding :10px 0px 10px 10px;
+}
+.f12red {
+	font-size: 90%;
+	color: #CC0000;
+}
+
+.f12-14 {
+	font-size: 12px;
+	line-height: 14px;
+	color: #666666;
+}
+
+.f12-14gr {
+	font-size: 22px;
+	line-height: 20px;
+	color: #333333;
+	padding :20px 0px 0px 10px;
+	text-align: left;
+}
+.f12-12gr {
+	font-size: 80%;
+	line-height: 10px;
+	color: #333333;
+	padding :2px 0px 0px 10px;
+	text-align: left;
+}
+.f15-gr {
+	font-size: 20px;
+	line-height: 10px;
+	color: #333333;
+	padding :20px 0px 0px 10px;
+	text-align: left;
+}
+
+.f12-14or {
+	font-size: 90%;
+	line-height: 20px;
+	color: #FF9900;
+	padding :10px 0px 0px 10px;
+	text-align: right;
+}
+
+.f17-gr {
+	font-size: 17px;
+	line-height: 10px;
+	color: #333333;
+	padding :2px 0px 0px 10px;
+	text-align: left;
+}
+
+.hr {
+	width: 600px;
+	color: #333333;
+	padding:5px 0px 0px 5px;
+}
+
+
+.tbl_color1 {
+	background: #999999;
+}
+.tbl_color2{
+	background: #ffee58;
+}
+
+.tbl_color3 {
+	margin: 2px;
+	padding-left: 5px;
+	background: #ffffff;
+}
+
+.tbl_color4 {
+	margin: 2px;
+	padding-left: 5px;
+	background: #CCCCCC;
+}
+
+.tbl_color5 {
+	margin: 2px;
+	padding-left: 5px;
+	background: #ffe6e6;
+}
+.tbl_color6 {
+	margin: 2px;
+	padding-left: 5px;
+	background: #f0f4c3;
+}
+.f_90 {
+	font-size: 80%; 
+}
+.f_75 {
+	font-size: 75%; 
+}
+
+
+.f_step {
+	color :#AA5455;
+	font-weight :bold;
+}
+#f_space {
+	padding:10px 0px 10px 5px;
+}
+
+[id^="suggest"]:not([id$="_text"]) {
+    position: absolute;
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCFF;
+    font-size: 90%;
+    min-width: 200px;
+}
+[id^="suggest"] div {
+    display: block;
+    min-width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+[id^="suggest"] div.select{ /* キー上下で選択した場合のスタイル */
+    color: #FFFFFF;
+    background-color: #3366FF;
+}
+[id^="suggest"] div.over{ /* マウスオーバ時のスタイル */
+    background-color: #99CCFF;
+}
+input {
+	border-radius: 0.25rem;
+	border: 1px solid #ced4da;
+}
+input[type="text"] {
+	height: 25px;
+	padding-left: 5px;
+}
+input[type="password"] {
+	height: 25px;
+	padding-left: 5px;
+}
+input[type="password"] {
+	height: 25px;
+	width: 214px;
+}
+select {
+	height: 25px;
+	border-radius: 0.25rem;
+	border: 1px solid #ced4da;
+}
+input[type="button"] {
+  display: inline-block;
+  border-radius: 0.25rem;
+  background-color: #00bfa5;
+  text-align: center;
+  color: white;
+  min-width: 80px;
+  height: 30px;
+  cursor: pointer;
+}
+input[type="submit"] {
+  display: inline-block;
+  border-radius: 0.25rem;
+  background-color: #00bfa5;
+  text-align: center;
+  color: white;
+  min-width: 80px;
+  height: 30px;
+  cursor: pointer;
+}
+input[type="button"]:hover {
+   color: #fff;
+   background-color: #009984;
+   border-color: #008c79;
+}
+input[type="submit"]:hover {
+   color: #fff;
+   background-color: #009984;
+   border-color: #008c79;
+}
+input[type=checkbox] {
+	width:			18px;
+	height:			18px;
+}
+button {
+  border: 1px solid #ced4da;
+  display: inline-block;
+  border-radius: 0.25rem;
+  background-color: #00bfa5;
+  text-align: center;
+  color: white;
+  min-width: 80px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: .4rem .8rem;
+}
+.bg-secondary {
+    background-color: #6c757d!important;
+}
+.navbar>.container, .navbar>.container-fluid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+@media (min-width: 576px)
+.navbar-expand-sm>.container, .navbar-expand-sm>.container-fluid {
+    flex-wrap: nowrap;
+}
+@media (min-width: 1200px)
+.container {
+    max-width: 1140px;
+}
+@media (min-width: 992px)
+.container {
+    max-width: 960px;
+}
+@media (min-width: 768px)
+.container {
+    max-width: 720px;
+}
+@media (min-width: 576px)
+.container {
+    max-width: 540px;
+}
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.navbar-dark .navbar-brand {
+    color: #fff;
+}
+a:visited {
+    color: #669999;
+    text-decoration: none;
+}
+.navbar-brand {
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: .8rem;
+    font-size: 1rem;
+    line-height: inherit;
+    white-space: nowrap;
+}
+a {
+    background-color: transparent;
+}
+.navbar-collapse {
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-items: center;
+}
+@media (min-width: 576px)
+.navbar-expand-sm .navbar-collapse {
+    display: flex!important;
+    flex-basis: auto;
+}
+@media (min-width: 576px)
+.navbar-expand-sm .navbar-nav {
+    flex-direction: row;
+}
+
+.mr-auto, .mx-auto {
+    margin-right: auto!important;
+}
+.navbar-nav {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    font-size: 0.75rem;
+}
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+user agent stylesheet
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+user agent stylesheet
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+.navbar-nav {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+.navbar-expand-sm .navbar-collapse {
+    display: flex!important;
+    flex-basis: auto;
+}
+.navbar-expand-sm .navbar-nav .nav-link {
+    padding-right: .5rem;
+    padding-left: .5rem;
+}
+.navbar-expand-sm .navbar-nav {
+    flex-direction: row;
+}
+.collapse:not(.show) {
+    display: none;
+}
+.navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show>.nav-link {
+    color: #fff;
+}
+
+.navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover {
+    color: rgba(255,255,255,.75);
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5);
+}
+
+.navbar-nav .nav-link {
+    padding-right: 0;
+    padding-left: 0;
+}
+.nav-link:focus, .nav-link:hover, .navbar-brand:hover {
+    text-decoration: none;
+}
+a:hover {
+    color: #35817a;
+    text-decoration: underline;
+}
+.nav-link {
+    display: block;
+    padding: .5rem 1rem;
+}
+
+.mr-auto, .mx-auto {
+    margin-right: auto!important;
+}
+.navbar-nav {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+.btn-square {
+  line-height: 90px;
+  display: inline-block;
+  text-align:center;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #00bfa5;
+  color: #FFF !important;
+  box-shadow: 2px 2px 3px 1px #666;
+  -moz-box-shadow: 2px 2px 3px 1px #666;
+  -webkit-box-shadow: 2px 2px 3px 1px #666;
+  border-radius: 4px;
+  width: 280px;
+  height: 120px;
+  font-size: 30px;
+  text-shadow: 1px 1px 2px #000;
+  margin-top: 30px;
+  opacity:0.7;
+}
+.btn-square:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+}
+.btn-left{
+	margin-right: 15px;
+}
+.btn-right{
+	margin-left: 15px;
+}

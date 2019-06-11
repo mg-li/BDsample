@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/index.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>万代商事 管理画面</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+<link href="./css/kanri_style.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="./js/prototype.js"></script>
+<script language="JavaScript" src="./js/zaiko.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<script language="JavaScript" src="./js/common.js"></script>
+</head>
+
+<body>
+<div align="center">
+ 	<nav class="navbar navbar-expand-sm navbar-dark bg-secondary">
+        <div class="container">
+            <a class="navbar-brand" href="/">万代商事 販売・在庫管理システム</a>
+            
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/sales/search.php"><i class="fas fa-caret-right"></i> 在庫検索</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/day/search.php"><i class="fas fa-caret-right"></i> 売上検索 </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/sales/input.php"><i class="fas fa-caret-right"></i> 登録内容確認 </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/sales/print.php"><i class="fas fa-caret-right"></i> 納品書印刷 </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/day/pickup_melanin_list.php"><i class="fas fa-caret-right"></i> ピックアップリスト </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/"><i class="fas fa-caret-right"></i> メニューへ戻る</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<table width="1200" border="0" cellpadding="0" cellspacing="0">
+  <tr><td width="4" background="./img/l_b.gif"></td>
+    <td width="6" background="./img/line_l.gif"></td>
+	    <!-- InstanceBeginEditable name="main" -->
+
+    <td colspan="4" height="450" valign="top"><table width="700"  border="0" cellpadding="0" cellspacing="0" align="center">
+<tr>
+<td width="250" class="f12-14gr">在庫検索（入出庫）</td>
+<td width="401"></td>
+<td width="169">&nbsp;</td></tr>
+<tr><td colspan="3"><hr align="left" size="1px" noshade width="700" color="#333333"></td></tr>
+</table>
+<img src="./img/spacer.gif" height="3" width="600">
+<TABLE cellSpacing=1 cellPadding=3 width=700 class="tbl_color1" border=0 align="center">
+<form action="./search.php" name="forms" method="post"><input type="hidden" name="cop" value="search">
+ <TR vAlign=top class="f_90">
+ <TD align=center vAlign=center class="tbl_color2">マーク</TD>
+ <TD align=center vAlign=center class="tbl_color2">品番</TD>
+ <TD align=center vAlign=center class="tbl_color2">サイズ</TD>
+ </TR>
+  <TR vAlign=top class="f_90">
+ <TD class="tbl_color3"><input type="text" id="d12" size="10" maxlength="80" name="mark1" value="" onchange="execute();"></TD>
+ <TD class="tbl_color3"><input type="text" id="d13" size="10" maxlength="80" name="product_number1" value="" onchange="execute();"></TD>
+ <TD class="tbl_color3"><input type="text" id="d14" size="10" maxlength="80" name="size1" value="" onchange="execute();"></TD>
+  </TR>
+
+  <TR vAlign=top class="f_90">
+ <TD class="tbl_color3"><input type="text" id="d22" size="10" maxlength="80" name="mark2" value="" onchange="execute();"></TD>
+ <TD class="tbl_color3"><input type="text" id="d23" size="10" maxlength="80" name="product_number2" value="" onchange="execute();"></TD>
+ <TD class="tbl_color3"><input type="text" id="d24" size="10" maxlength="80" name="size2" value="" onchange="execute();"></TD>
+  </TR>
+
+  <TR vAlign=top class="f_90">
+ <TD class="tbl_color3"><input type="text" id="d32" size="10" maxlength="80" name="mark3" value="" onchange="execute();"></TD>
+ <TD class="tbl_color3"><input type="text" id="d33" size="10" maxlength="80" name="product_number3" value="" onchange="execute();"></TD>
+ <TD class="tbl_color3"><input type="text" id="d34" size="10" maxlength="80" name="size3" value="" onchange="execute();"></TD>
+  </TR>
+
+  <TR vAlign=top class="f_90">
+ <TD class="tbl_color3"><input type="text" id="d42" size="10" maxlength="80" name="mark4" value="" onchange="execute();"></TD>
+ <TD class="tbl_color3"><input type="text" id="d43" size="10" maxlength="80" name="product_number4" value="" onchange="execute();"></TD>
+ <TD class="tbl_color3"><input type="text" id="d44" size="10" maxlength="80" name="size4" value="" onchange="execute();"></TD>
+  </TR>
+
+  <TR vAlign=top class="f_90">
+ <TD class="tbl_color3"><input type="text" id="d52" size="10" maxlength="80" name="mark5" value="" onchange="execute();"></TD>
+ <TD class="tbl_color3"><input type="text" id="d53" size="10" maxlength="80" name="product_number5" value="" onchange="execute();"></TD>
+ <TD class="tbl_color3"><input type="text" id="d54" size="10" maxlength="80" name="size5" value="" onchange="execute();"></TD>
+  </TR>
+
+ </table>
+
+<img src="./img/spacer.gif" height="5" width="600">
+<table width="710" border="0" cellpadding="0" cellspacing="0" align="center">
+<tr>
+  <td class="tbl_white" align="left"><input type="submit" name="search" value="在庫検索">  <input type="submit" name="clear" value="クリア"></td></tr>
+</form>
+</table>
+
+<table width="710" border="0" cellpadding="0" cellspacing="1" align="center">
+<tr>
+  <td class="tbl_white" align="left"><img src="./goods/img/t_stock.gif" alt="商品在庫一覧" width="710" height="40"></td>
+</tr>
+</table>
+
+<div id="container"></div>
+<div id="container2" style="display:block;">
+
+<div align="center" class="f_90">
+全 30 件中の 2 件
+(2/30 ページ)<br>
+</div>
+
+<TABLE cellSpacing=1 cellPadding=3 width=773 class="tbl_color1" border=0 align="center">
+ <TR vAlign=top class="f_90">
+ <TD width="39" align=center vAlign=center class="tbl_color2">マーク</TD>
+ <TD width="62" align=center vAlign=center class="tbl_color2">品番</TD>
+ <TD width="45" align=center vAlign=center class="tbl_color2">サイズ</TD>
+ <TD width="255" align=center vAlign=center class="tbl_color2">名称/関連商品</TD>
+ <TD width="63" align=center vAlign=center class="tbl_color2">在庫量</TD>
+ <TD width="50" align=center vAlign=center class="tbl_color2">廃盤日</TD>
+ <TD width="240" align=center vAlign=center class="tbl_color2">本社</TD>
+ <TD width="240" align=center vAlign=center class="tbl_color2">阿保</TD>
+ <TD width="240" align=center vAlign=center class="tbl_color2">三宅</TD>
+ <TD width="240" align=center vAlign=center class="tbl_color2">港</TD>
+</TR>
+
+<TR vAlign=top class="f_90">
+ <TD align=left vAlign=center class="tbl_color3">AAA</TD>
+ <TD align=left vAlign=center class="tbl_color3">productNumber</TD>
+ <TD align=left vAlign=center class="tbl_color3">size</TD>
+ <TD align=left vAlign=center class="tbl_color3">XXX</TD>
+ <TD align=left vAlign=center class="tbl_color3"><div style="font-size: 18px;font-weight:bold;">XXX</div></TD>
+ <TD align=left vAlign=center class="tbl_color3">XXX</TD>
+ <TD align=center vAlign=center class="tbl_color3" cellspacing="1"><button name="edit" onclick="" style="min-width:50px;width:50px;height:40px;">本社<br>(100)</button></TD>
+ <TD align=center vAlign=center class="tbl_color3" cellspacing="1"><button name="edit" onclick="" style="min-width:50px;width:50px;height:40px;">阿保<br>(0)</button></TD>
+ <TD align=center vAlign=center class="tbl_color3" cellspacing="1"><button name="edit" onclick="" style="min-width:50px;width:50px;height:40px;">三宅<br>(30)</button></TD>
+ <TD align=center vAlign=center class="tbl_color3" cellspacing="1"><button name="edit" onclick="" style="min-width:50px;width:50px;height:40px;">港<br>(150)</button></TD>
+</TR>
+<TR vAlign=top class="f_90">
+ <TD align=left vAlign=center class="tbl_color3">AAA</TD>
+ <TD align=left vAlign=center class="tbl_color3">productNumber</TD>
+ <TD align=left vAlign=center class="tbl_color3">size</TD>
+ <TD align=left vAlign=center class="tbl_color3">XXX</TD>
+ <TD align=left vAlign=center class="tbl_color3"><div style="font-size: 18px;font-weight:bold;">XXX</div></TD>
+ <TD align=left vAlign=center class="tbl_color3">XXX</TD>
+ <TD align=center vAlign=center class="tbl_color3" cellspacing="1"><button name="edit" onclick="" style="min-width:50px;width:50px;height:40px;">本社<br>(100)</button></TD>
+ <TD align=center vAlign=center class="tbl_color3" cellspacing="1"><button name="edit" onclick="" style="min-width:50px;width:50px;height:40px;">阿保<br>(0)</button></TD>
+ <TD align=center vAlign=center class="tbl_color3" cellspacing="1"><button name="edit" onclick="" style="min-width:50px;width:50px;height:40px;">三宅<br>(30)</button></TD>
+ <TD align=center vAlign=center class="tbl_color3" cellspacing="1"><button name="edit" onclick="" style="min-width:50px;width:50px;height:40px;">港<br>(150)</button></TD>
+</TR>
+<TR vAlign=top class="f_90">
+ <TD align=left vAlign=center class="tbl_color3">AAA</TD>
+ <TD align=left vAlign=center class="tbl_color3">productNumber</TD>
+ <TD align=left vAlign=center class="tbl_color3">size</TD>
+ <TD align=left vAlign=center class="tbl_color3">XXX</TD>
+ <TD align=left vAlign=center class="tbl_color3"><div style="font-size: 18px;font-weight:bold;">XXX</div></TD>
+ <TD align=left vAlign=center class="tbl_color3">XXX</TD>
+ <TD align=center vAlign=center class="tbl_color3" cellspacing="1"><button name="edit" onclick="" style="min-width:50px;width:50px;height:40px;">本社<br>(100)</button></TD>
+ <TD align=center vAlign=center class="tbl_color3" cellspacing="1"><button name="edit" onclick="" style="min-width:50px;width:50px;height:40px;">阿保<br>(0)</button></TD>
+ <TD align=center vAlign=center class="tbl_color3" cellspacing="1"><button name="edit" onclick="" style="min-width:50px;width:50px;height:40px;">三宅<br>(30)</button></TD>
+ <TD align=center vAlign=center class="tbl_color3" cellspacing="1"><button name="edit" onclick="" style="min-width:50px;width:50px;height:40px;">港<br>(150)</button></TD>
+</TR>
+ </table>
+ <div align="center" class="f_90">
+
+全 30 件中の 2 件
+(1/2 ページ)<br>
+</div>
+</div>
+ <img src="./img/spacer.gif" height="7" width="600"> </td>
+<!-- InstanceEndEditable -->
+    <td width="12" background="./img/line_r.gif"></td>
+    <td width="5" background="./img/r_b.gif"></td>
+  </tr>
+    <tr><td colspan="2"><img src="./img/b_l.gif" width="10" height="13" border="0" alt=""></td>
+    <td colspan="4"><img src="./img/bottom.gif" width="100%" height="13" border="0" alt=""></td>
+    <td colspan="2"><img src="./img/b_r.gif" width="17" height="13" border="0" alt=""></td>
+  </tr>
+</table>
+<!-- InstanceBeginEditable name="bottom" -->
+ <TABLE cellSpacing=0 cellPadding=0 border=0 align="center" width="790" class="f_90">
+<tr>
+<td align="center">(C) 2007 BANDAI SHOJI Corporation All Rights Reserved.　</td>
+</tr>
+</table>
+  <!-- InstanceEndEditable -->
+</div>
+</body>
+<!-- InstanceEnd --></html>
