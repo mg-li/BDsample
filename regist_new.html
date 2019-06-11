@@ -1,0 +1,597 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/index.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>万代商事 管理画面</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+<link href="./css/kanri_style.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="./js/prototype.js"></script>
+<script language="JavaScript" src="./js/zaiko.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<script language="JavaScript" src="./js/common.js"></script>
+</head>
+
+<body>
+<div align="center">
+ 	<nav class="navbar navbar-expand-sm navbar-dark bg-secondary">
+        <div class="container">
+            <a class="navbar-brand" href="/">万代商事 販売・在庫管理システム</a>
+            
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/sales/search.php"><i class="fas fa-caret-right"></i> 在庫検索</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/day/search.php"><i class="fas fa-caret-right"></i> 売上検索 </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/sales/input.php"><i class="fas fa-caret-right"></i> 登録内容確認 </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/sales/print.php"><i class="fas fa-caret-right"></i> 納品書印刷 </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/day/pickup_melanin_list.php"><i class="fas fa-caret-right"></i> ピックアップリスト </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/"><i class="fas fa-caret-right"></i> メニューへ戻る</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<table width="1200" border="0" cellpadding="0" cellspacing="0">
+  <tr><td width="4" background="./img/l_b.gif"></td>
+    <td width="6" background="./img/line_l.gif"></td>
+	    <!-- InstanceBeginEditable name="main" -->
+
+    <td colspan="4" height="450" valign="top">
+  <table width="730"  border="0" cellpadding="0" cellspacing="0" align="center">
+  <tr><td>
+  <img src="/admin/img/spacer.gif" height="2" width="600"></td></tr></table>
+  <table width="730"  border="0" cellpadding="0" cellspacing="0" align="center">
+  <tr>
+  <td width="191" class="f12-14gr">売上入力</td>
+  <td width="340" align="left" class="tbl_color3"><input type="checkbox" name="reprint_flg" value="一括印刷入力" {if $reprint_flg}checked{/if}>一括印刷入力</td>
+  <td width="169">&nbsp;</td>
+  </tr>
+  <tr><td colspan="3"><hr align="left" size="1px" noshade width="800" color="#333333"></td></tr>
+  </table>
+  <form action="" name="form1" method="post">
+  <input type="hidden" name="cop" id="cop" value="">
+  <input type="hidden" name="type" id="type" value="">
+  <TABLE cellSpacing=1 cellPadding=2 width=800 class="tbl_color1" border=0 align="center">
+  <tr class="f_90">
+  <td width="76" align="left" class="tbl_color2">処理区分</td>
+  <td width="145" align="left" class="tbl_color3"><span class="form_f10">
+  <select name="kubun" id="proctype">
+<option>売上</option>
+<option>仕入</option>
+<option>拠点間移動</option>
+</select></span><input type="checkbox" name="isogi" value="急" checked>急ぎ<br>
+<input type="text" size="20" name="isogi_biko" value="">
+</td>
+  <td width="71" align="left" class="tbl_color2">部門</td>
+  <td width="80" align="left" class="tbl_color3"><span class="form_f10">
+  <select name="bumon">
+<option>万代商事</option>
+</select></span></td>
+  <td width="50" align="left" class="tbl_color2">伝票NO</td>
+  <td width="85" align="left" class="tbl_color3"><input type="text" size="7" name="at" value=""><input type="button" name="call" value="読み込み" onclick="">
+  </td>
+  <td width="33" align="left" class="tbl_color2">税率</td>
+  <td width="61" align="left" class="tbl_color3">5</td>
+  </tr>
+  <tr class="f_90">
+  <td align="left" class="tbl_color2">伝票年月日</td>
+  <td colspan="2" align="left" class="tbl_color3">
+  <span class="form_f10">
+  <input type="text" size="12" maxlength="10" id="slip_date" name="slip_date" value="" onchange="">
+  </span></td>
+  <td align="left" class="tbl_color2">納品日</td>
+  <td colspan="4" align="left" class="tbl_color3"><span class="form_f10">
+  
+  <input type="text" size="12" maxlength="10" id="nouhin_date" name="nouhin_date" value="" onchange="">
+
+</span></td>
+ </tr>
+    <tr class="f_90">
+  <td align="left" class="tbl_color2">得意先</td>
+  <td colspan="2" align="left" class="tbl_color3">
+  <table><tr><td><span class="form_f10"><input type="text" size="7" name="customer_id" id="customer" value="" autocomplete="off"></td><td><div id="cutoff_date">締め日：</div></td></tr></table></td>
+  <td align="left" class="tbl_color2">担当者</td>
+  <td colspan="4" align="left" class="tbl_color3"><span class="form_f10">担当者名</span></td>
+  </tr>
+  <tr class="f_90">
+  <td align="left" class="tbl_color2">納品先</td>
+  <td colspan="2" align="left" class="tbl_color3"><span class="form_f10"><input type="text" size="28"  id="customer2" name="nouhin_name" value="" autocomplete="off"></td>
+  <td align="left" class="tbl_color2">オーダーNO</td>
+  <td colspan="4" align="left" class="tbl_color3"><span class="form_f10"><input type="text" size="28"  name="order_no" value=""></span></td>
+  </tr>
+  <tr class="f_90">
+  <td align="left" class="tbl_color2">物件名</td>
+  <td colspan="2" align="left" class="tbl_color3"><input type="text" size="28" name="bukken_name" value=""></td>
+  <td align="left" class="tbl_color2">備考</td>
+  <td colspan="4" align="left" class="tbl_color3"><span class="form_f10"><input type="text" size="28"  name="biko" value=""></span></td>
+  </tr>
+
+  </table>
+  
+   <table cellSpacing=0 cellPadding=0 class="tbl_color3" border=0 width="1000" align="center">
+     <tr><td> <img src="./admin/img/spacer.gif" height="3" width="900"></td></tr>
+     </table>
+     
+     <div align="center" class="f_90"><font color="red" ></font></div>
+	 
+	 
+		 <div align="center" class="f_90"><font color="red" ></font></div>
+  <table cellSpacing=1 cellPadding=1 class="tbl_color1" border=0 width="1000" align="center">
+	  <tr vAlign="top" class="f_90">
+	    <td width="100" align="left" class="tbl_color2" valign="middle">伝票区分</td>
+	    <td width="80" align="left" class="tbl_color2">マーク</td>
+	    <td width="80" align="left" class="tbl_color2">品番</td>
+	    <td width="80" align="left" class="tbl_color2">サイズ</td>
+	    <td width="250" align="left" class="tbl_color2">数量/在庫数 在庫備考</td>
+	    <td width="250" align="left" class="tbl_color2">特値区分</td>
+	    <td width="80" align="left" class="tbl_color2">売上単価</td>
+	    <td width="80" align="left" class="tbl_color2">売上金額</td>
+	  </tr>
+	  <tr vAlign="top" class="f_90">
+	    <td align="left" class="tbl_color2" colspan="5">品名 表示サイズ</td>
+	    <td align="left" class="tbl_color2">分類</td>
+	    <td align="left" class="tbl_color2" colspan="1">仕入値</td>
+	    <td align="left" class="tbl_color2" colspan="1">フォースター</td>
+	  </tr>
+	  <tr vAlign="top" class="f_90">
+	    <td align="left" class="tbl_color2" colspan="7">備考</td>
+	    <td align="left" class="tbl_color2"></td>
+	  </tr>
+	  <tr vAlign="top" class="f_90">
+	    <td align="left" class="tbl_color2" colspan="7">サンプル</td>
+	    <td align="left" class="tbl_color2"></td>
+	  </tr>
+	  
+	  <!--START0-->
+	  <tr vAlign=top class="f_90">
+		  <td align="left" class="tbl_color3">
+		  	<span class="form_f10">
+		  	<select name="denpyo_kubun0">
+		  		<option>通常</option>
+		  		<option>単価訂正</option>
+			</select>
+			</span>
+	  	  </td>
+		  <td align="left" class="tbl_color3">
+		  	<input type="text" size="1" name="mark0" value="" style="ime-mode: disabled;">
+		  </TD>
+		  <td align="left" class="tbl_color3">
+		  	<input type="text" size="4" name="product_number0" value="" style="ime-mode: disabled;">
+		  </TD>
+		  <td align="left" class="tbl_color3">
+		  	<input type="text" size="5" name="size0" value="">
+		  </TD>
+		  <td align="left" class="tbl_color3">		  	
+		  	<span class="form_f10">
+	    	<input type="text" size="1" name="num0" value="" onChange="" style="ime-mode: disabled;">/
+	    	<input type="text" size="1" name="zaiko0" value="" style="ime-mode: disabled;">
+	    	<input type="text" size="4" name="zaikio_biko0" value="" style="ime-mode: active;">
+			</span>	  	
+		  </TD>
+		  <td align="left" class="tbl_color3">
+		  	<span class="form_f10">
+ 				<input type="radio">⁻
+ 				<input type="radio">特値
+ 				<input type="radio">特値預り
+ 				<input type="radio">預り引落
+			</span>
+		  </td>
+		  <td align="left" class="tbl_color3">
+		  	<input type="text" size="4" id="price1_0" name="price1_0" value="" onChange="" style="ime-mode: disabled;">
+		  </TD>
+		  <td align="left" class="tbl_color3"><input type="text" size="4" id="price2_0" name="price2_0" value="" style="ime-mode: disabled;"></TD>
+	  </tr>
+	  <tr vAlign=top class="f_90">
+	    <td align="left" class="tbl_color3" colspan="5">
+	    	<input type="text" size="53" name="name0" value="" style="ime-mode: active;"> <input type="text" size="12" name="disp_size0" value="">
+	    </TD>
+	    <td align="left" class="tbl_color3">
+	        <select name="goods_class_id0">
+	        	<option></option>
+				<option>サンナミ・ポリ(艶・マスキング)</option>
+		  	</select>
+		  	</TD>
+		<td align="left" class="tbl_color3" colspan="1"><input type="text" size="4" style="ime-mode: disabled;"></TD>
+	    <td align="left" class="tbl_color3" colspan="1">
+	    	<span class="form_f10">
+	        
+		  	<select name="fourstar0">
+		  		<option></option>
+				<option>F☆☆☆☆</option>
+				<option>F☆☆☆</option>
+				<option>F☆☆</option>
+			</select>
+		  	</span>
+		</td>
+	  </tr>
+	  <tr vAlign=top class="f_90">
+	    <td align="left" class="tbl_color3" colspan="6">
+	    	<input type="text" size="100" name="biko0" value="" style="ime-mode: active;">
+	    </TD>
+	    <td align="left" class="tbl_color3" colspan="2">
+	      <label for="sample_flg0" style="display: inline;font-size:10px;">サンプル
+              <input id="sample_flg0" type="checkbox" name="sample_flg0" value="1" style="margin: 3px 0 0 0;">
+          </label>
+	    	<input name="cl1" type="button" value="クリア" onclick="clear_check_proc(0);">
+	    </TD>
+	  </tr>
+ 	 <!--END0-->
+ 	 
+ 	 <!--START1-->
+	  <tr vAlign=top class="f_90">
+		  <td align="left" class="tbl_color6">
+		  	<span class="form_f10">
+		  	<select name="denpyo_kubun1">
+		  		<option>通常</option>
+		  		<option>単価訂正</option>
+			</select>
+			</span>
+	  	  </td>
+		  <td align="left" class="tbl_color6">
+		  	<input type="text" size="1" name="mark1" value="" style="ime-mode: disabled;">
+		  </TD>
+		  <td align="left" class="tbl_color6">
+		  	<input type="text" size="4" name="product_number1" value="" style="ime-mode: disabled;">
+		  </TD>
+		  <td align="left" class="tbl_color6">
+		  	<input type="text" size="5" name="size1" value="">
+		  </TD>
+		  <td align="left" class="tbl_color6">		  	
+		  	<span class="form_f10">
+	    	<input type="text" size="1" name="num1" value="" onChange="" style="ime-mode: disabled;">/
+	    	<input type="text" size="1" name="zaiko1" value="" style="ime-mode: disabled;">
+	    	<input type="text" size="4" name="zaikio_biko1" value="" style="ime-mode: active;">
+			</span>	  	
+		  </TD>
+		  <td align="left" class="tbl_color6">
+		  	<span class="form_f10">
+		  		<input type="radio">⁻
+ 				<input type="radio">特値
+ 				<input type="radio">特値預り
+ 				<input type="radio">預り引落
+			</span>
+		  </td>
+		  <td align="left" class="tbl_color6">
+		  	<input type="text" size="4" id="price1_1" name="price1_1" value="" onChange=" style="ime-mode: disabled;">
+		  </TD>
+		  <td align="left" class="tbl_color6"><input type="text" size="4" id="price2_1" name="price2_1" value="" style="ime-mode: disabled;"></TD>
+	  </tr>
+	  <tr vAlign=top class="f_90">
+	    <td align="left" class="tbl_color6" colspan="5">
+	    	<input type="text" size="53" name="name1" value="" style="ime-mode: active;"> <input type="text" size="12" name="disp_size1" value="">
+	    </TD>
+	    <td align="left" class="tbl_color6">
+	        <select name="goods_class_id1">
+				<option></option>
+				<option>サンナミ・ポリ(艶・マスキング)</option>
+		  	</select>
+		  	</TD>
+	    <td align="left" class="tbl_color6" colspan="2">
+	    	<span class="form_f10">
+	        
+		  	<select name="fourstar1">
+				<option></option>
+				<option>F☆☆☆☆</option>
+				<option>F☆☆☆</option>
+				<option>F☆☆</option>
+			</select>
+		  	</span>
+		</td>
+	 </tr>
+	  <tr vAlign=top class="f_90">
+	    <td align="left" class="tbl_color6" colspan="6">
+	    	<input type="text" size="100" name="biko1" value="" style="ime-mode: active;">
+	    </TD>
+	    <td align="left" class="tbl_color6" colspan="2">
+	      <label for="sample_flg1" style="display: inline;font-size:10px;">サンプル
+              <input id="sample_flg1" type="checkbox" name="sample_flg1" value="1" style="margin: 3px 0 0 0;">
+          </label>
+	    	<input name="cl1" type="button" value="クリア" onclick="clear_check_proc(1);">
+	    </TD>
+	  </tr>
+ 	 <!--END1-->
+ 	 
+ 	 <!--START2-->
+	  <tr vAlign=top class="f_90">
+		  <td align="left" class="tbl_color3">
+		  	<span class="form_f10">
+		  	<select name="denpyo_kubun0">
+		  		<option>通常</option>
+		  		<option>単価訂正</option>
+			</select>
+			</span>
+	  	  </td>
+		  <td align="left" class="tbl_color3">
+		  	<input type="text" size="1" name="mark0" value="" style="ime-mode: disabled;">
+		  </TD>
+		  <td align="left" class="tbl_color3">
+		  	<input type="text" size="4" name="product_number0" value="" style="ime-mode: disabled;">
+		  </TD>
+		  <td align="left" class="tbl_color3">
+		  	<input type="text" size="5" name="size0" value="">
+		  </TD>
+		  <td align="left" class="tbl_color3">		  	
+		  	<span class="form_f10">
+	    	<input type="text" size="1" name="num0" value="" onChange="" style="ime-mode: disabled;">/
+	    	<input type="text" size="1" name="zaiko0" value="" style="ime-mode: disabled;">
+	    	<input type="text" size="4" name="zaikio_biko0" value="" style="ime-mode: active;">
+			</span>	  	
+		  </TD>
+		  <td align="left" class="tbl_color3">
+		  	<span class="form_f10">
+ 				<input type="radio">⁻
+ 				<input type="radio">特値
+ 				<input type="radio">特値預り
+ 				<input type="radio">預り引落
+			</span>
+		  </td>
+		  <td align="left" class="tbl_color3">
+		  	<input type="text" size="4" id="price1_0" name="price1_0" value="" onChange="" style="ime-mode: disabled;">
+		  </TD>
+		  <td align="left" class="tbl_color3"><input type="text" size="4" id="price2_0" name="price2_0" value="" style="ime-mode: disabled;"></TD>
+	  </tr>
+	  <tr vAlign=top class="f_90">
+	    <td align="left" class="tbl_color3" colspan="5">
+	    	<input type="text" size="53" name="name0" value="" style="ime-mode: active;"> <input type="text" size="12" name="disp_size0" value="">
+	    </TD>
+	    <td align="left" class="tbl_color3">
+	        <select name="goods_class_id0">
+	        	<option></option>
+				<option>サンナミ・ポリ(艶・マスキング)</option>
+		  	</select>
+		  	</TD>
+		<td align="left" class="tbl_color3" colspan="1"><input type="text" size="4" style="ime-mode: disabled;"></TD>
+	    <td align="left" class="tbl_color3" colspan="1">
+	    	<span class="form_f10">
+	        
+		  	<select name="fourstar0">
+		  		<option></option>
+				<option>F☆☆☆☆</option>
+				<option>F☆☆☆</option>
+				<option>F☆☆</option>
+			</select>
+		  	</span>
+		</td>
+	  </tr>
+	  <tr vAlign=top class="f_90">
+	    <td align="left" class="tbl_color3" colspan="6">
+	    	<input type="text" size="100" name="biko0" value="" style="ime-mode: active;">
+	    </TD>
+	    <td align="left" class="tbl_color3" colspan="2">
+	      <label for="sample_flg0" style="display: inline;font-size:10px;">サンプル
+              <input id="sample_flg0" type="checkbox" name="sample_flg0" value="1" style="margin: 3px 0 0 0;">
+          </label>
+	    	<input name="cl1" type="button" value="クリア" onclick="clear_check_proc(0);">
+	    </TD>
+	  </tr>
+ 	 <!--END2-->
+ 	 
+ 	 <!--START3-->
+	  <tr vAlign=top class="f_90">
+		  <td align="left" class="tbl_color6">
+		  	<span class="form_f10">
+		  	<select name="denpyo_kubun1">
+		  		<option>通常</option>
+		  		<option>単価訂正</option>
+			</select>
+			</span>
+	  	  </td>
+		  <td align="left" class="tbl_color6">
+		  	<input type="text" size="1" name="mark1" value="" style="ime-mode: disabled;">
+		  </TD>
+		  <td align="left" class="tbl_color6">
+		  	<input type="text" size="4" name="product_number1" value="" style="ime-mode: disabled;">
+		  </TD>
+		  <td align="left" class="tbl_color6">
+		  	<input type="text" size="5" name="size1" value="">
+		  </TD>
+		  <td align="left" class="tbl_color6">		  	
+		  	<span class="form_f10">
+	    	<input type="text" size="1" name="num1" value="" onChange="" style="ime-mode: disabled;">/
+	    	<input type="text" size="1" name="zaiko1" value="" style="ime-mode: disabled;">
+	    	<input type="text" size="4" name="zaikio_biko1" value="" style="ime-mode: active;">
+			</span>	  	
+		  </TD>
+		  <td align="left" class="tbl_color6">
+		  	<span class="form_f10">
+		  		<input type="radio">⁻
+ 				<input type="radio">特値
+ 				<input type="radio">特値預り
+ 				<input type="radio">預り引落
+			</span>
+		  </td>
+		  <td align="left" class="tbl_color6">
+		  	<input type="text" size="4" id="price1_1" name="price1_1" value="" onChange=" style="ime-mode: disabled;">
+		  </TD>
+		  <td align="left" class="tbl_color6"><input type="text" size="4" id="price2_1" name="price2_1" value="" style="ime-mode: disabled;"></TD>
+	  </tr>
+	  <tr vAlign=top class="f_90">
+	    <td align="left" class="tbl_color6" colspan="5">
+	    	<input type="text" size="53" name="name1" value="" style="ime-mode: active;"> <input type="text" size="12" name="disp_size1" value="">
+	    </TD>
+	    <td align="left" class="tbl_color6">
+	        <select name="goods_class_id1">
+				<option></option>
+				<option>サンナミ・ポリ(艶・マスキング)</option>
+		  	</select>
+		  	</TD>
+	    <td align="left" class="tbl_color6" colspan="2">
+	    	<span class="form_f10">
+	        
+		  	<select name="fourstar1">
+				<option></option>
+				<option>F☆☆☆☆</option>
+				<option>F☆☆☆</option>
+				<option>F☆☆</option>
+			</select>
+		  	</span>
+		</td>
+	 </tr>
+	  <tr vAlign=top class="f_90">
+	    <td align="left" class="tbl_color6" colspan="6">
+	    	<input type="text" size="100" name="biko1" value="" style="ime-mode: active;">
+	    </TD>
+	    <td align="left" class="tbl_color6" colspan="2">
+	      <label for="sample_flg1" style="display: inline;font-size:10px;">サンプル
+              <input id="sample_flg1" type="checkbox" name="sample_flg1" value="1" style="margin: 3px 0 0 0;">
+          </label>
+	    	<input name="cl1" type="button" value="クリア" onclick="clear_check_proc(1);">
+	    </TD>
+	  </tr>
+ 	 <!--END3-->
+ 	 
+ 	 <!--START4-->
+	  <tr vAlign=top class="f_90">
+		  <td align="left" class="tbl_color3">
+		  	<span class="form_f10">
+		  	<select name="denpyo_kubun0">
+		  		<option>通常</option>
+		  		<option>単価訂正</option>
+			</select>
+			</span>
+	  	  </td>
+		  <td align="left" class="tbl_color3">
+		  	<input type="text" size="1" name="mark0" value="" style="ime-mode: disabled;">
+		  </TD>
+		  <td align="left" class="tbl_color3">
+		  	<input type="text" size="4" name="product_number0" value="" style="ime-mode: disabled;">
+		  </TD>
+		  <td align="left" class="tbl_color3">
+		  	<input type="text" size="5" name="size0" value="">
+		  </TD>
+		  <td align="left" class="tbl_color3">		  	
+		  	<span class="form_f10">
+	    	<input type="text" size="1" name="num0" value="" onChange="" style="ime-mode: disabled;">/
+	    	<input type="text" size="1" name="zaiko0" value="" style="ime-mode: disabled;">
+	    	<input type="text" size="4" name="zaikio_biko0" value="" style="ime-mode: active;">
+			</span>	  	
+		  </TD>
+		  <td align="left" class="tbl_color3">
+		  	<span class="form_f10">
+ 				<input type="radio">⁻
+ 				<input type="radio">特値
+ 				<input type="radio">特値預り
+ 				<input type="radio">預り引落
+			</span>
+		  </td>
+		  <td align="left" class="tbl_color3">
+		  	<input type="text" size="4" id="price1_0" name="price1_0" value="" onChange="" style="ime-mode: disabled;">
+		  </TD>
+		  <td align="left" class="tbl_color3"><input type="text" size="4" id="price2_0" name="price2_0" value="" style="ime-mode: disabled;"></TD>
+	  </tr>
+	  <tr vAlign=top class="f_90">
+	    <td align="left" class="tbl_color3" colspan="5">
+	    	<input type="text" size="53" name="name0" value="" style="ime-mode: active;"> <input type="text" size="12" name="disp_size0" value="">
+	    </TD>
+	    <td align="left" class="tbl_color3">
+	        <select name="goods_class_id0">
+	        	<option></option>
+				<option>サンナミ・ポリ(艶・マスキング)</option>
+		  	</select>
+		  	</TD>
+		<td align="left" class="tbl_color3" colspan="1"><input type="text" size="4" style="ime-mode: disabled;"></TD>
+	    <td align="left" class="tbl_color3" colspan="1">
+	    	<span class="form_f10">
+	        
+		  	<select name="fourstar0">
+		  		<option></option>
+				<option>F☆☆☆☆</option>
+				<option>F☆☆☆</option>
+				<option>F☆☆</option>
+			</select>
+		  	</span>
+		</td>
+	  </tr>
+	  <tr vAlign=top class="f_90">
+	    <td align="left" class="tbl_color3" colspan="6">
+	    	<input type="text" size="100" name="biko0" value="" style="ime-mode: active;">
+	    </TD>
+	    <td align="left" class="tbl_color3" colspan="2">
+	      <label for="sample_flg0" style="display: inline;font-size:10px;">サンプル
+              <input id="sample_flg0" type="checkbox" name="sample_flg0" value="1" style="margin: 3px 0 0 0;">
+          </label>
+	    	<input name="cl1" type="button" value="クリア" onclick="">
+	    </TD>
+	  </tr>
+ 	 <!--END4-->
+  </table>
+  
+  <table cellspacing=1 cellpadding=2 class="tbl_color3" border=0 width="730" align="center" style="margin: 30px;">
+     <tr valign=top class="f_90">
+       <td colspan="4" class="tbl_color3">&nbsp;</td>
+       <td width="246" colspan="2" align="right" class="tbl_color3"><table width="243" border="0" cellspacing="1" cellpadding="1" class="tbl_color1" align="right">
+         <tr>
+           <td width="110" class="tbl_color2">小計</td>
+             <td width="127" class="tbl_color3" align="right"><div id="total2"></div></td>
+           </tr>
+         <tr>
+           <td class="tbl_color2">売上合計</td>
+             <td class="tbl_color3" align="right"><div id="total1"></div></td>
+           </tr></table></td>
+     	 </tr>
+     </table>
+   <table border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 20px;">
+   	<tr>
+    	<td class="tbl_white" align="left">
+    	<!-- <input type="button" name="regist" onClick="save_data('');" value="登録">　 -->
+    	<input type="button" name="regist" onClick="" value="登録（PDF）">　
+        <a href="./input.php"><input type="button" name="regist" onClick="" value="戻る"></a>　
+        </td>
+        <td class="tbl_white" align="left">
+        	　<input type="submit" name="all_clear" value="クリア">
+        </td>
+        <td class="tbl_white" align="left">
+        	　<input type="button" name="all_price_clear" onclick="" value="単価削除">
+        </td>
+         <td class="tbl_white" align="left">
+        	　<input type="button" onclick="del_data();" name="del" value="削除">
+        </td>
+    	
+        <td class="tbl_white" align="right">
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+          	<input type="button" name="regist" onClick="" value="登録（PDF）1ページ目のみ">　
+        </td>
+    	
+    </tr>
+  </table>
+
+</form>
+<img src="./img/spacer.gif" height="7" width="600"></td>
+<!-- InstanceEndEditable -->
+    <td width="12" background="./img/line_r.gif"></td>
+    <td width="5" background="./img/r_b.gif"></td>
+  </tr>
+    <tr><td colspan="2"><img src="./img/b_l.gif" width="10" height="13" border="0" alt=""></td>
+    <td colspan="4"><img src="./img/bottom.gif" width="100%" height="13" border="0" alt=""></td>
+    <td colspan="2"><img src="./img/b_r.gif" width="17" height="13" border="0" alt=""></td>
+  </tr>
+</table>
+<!-- InstanceBeginEditable name="bottom" -->
+ <TABLE cellSpacing=0 cellPadding=0 border=0 align="center" width="790" class="f_90">
+<tr>
+<td align="center">(C) 2007 BANDAI SHOJI Corporation All Rights Reserved.　</td>
+</tr>
+</table>
+  <!-- InstanceEndEditable -->
+</div>
+</body>
+<!-- InstanceEnd --></html>
